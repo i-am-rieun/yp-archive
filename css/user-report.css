@@ -1,0 +1,24 @@
+/* 사용자 신고 UI: 모든 공개 페이지 공통 */
+.report-launcher{position:fixed;right:22px;bottom:22px;z-index:1100;display:inline-flex;align-items:center;gap:8px;padding:12px 17px;border:0;border-radius:999px;background:var(--color-brand,#d94670);color:#fff;font:inherit;font-size:14px;font-weight:750;box-shadow:0 8px 24px rgba(45,25,35,.2);cursor:pointer}
+.report-launcher:hover{filter:brightness(.96);transform:translateY(-1px)}
+.report-launcher:focus-visible,.report-dialog button:focus-visible,.report-dialog input:focus-visible,.report-dialog select:focus-visible,.report-dialog textarea:focus-visible{outline:3px solid rgba(217,70,112,.28);outline-offset:2px}
+.report-dialog{width:min(540px,calc(100% - 28px));max-height:min(86vh,760px);padding:0;border:1px solid #e9e3e7;border-radius:18px;background:#fff;color:#25232b;box-shadow:0 24px 80px rgba(24,18,22,.28)}
+.report-dialog::backdrop{background:rgba(25,20,24,.48);backdrop-filter:blur(2px)}
+.report-dialog form{display:grid;gap:13px;padding:22px}
+.report-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.report-dialog-head h2{margin:0;font-size:20px}
+.report-dialog-head p{margin:6px 0 0;color:#77717a;font-size:13px;line-height:1.5}
+.report-dialog-close{flex:0 0 auto;width:34px;height:34px;border:1px solid #e8e2e6;border-radius:50%;background:#fff;color:#5e5660;font-size:20px;cursor:pointer}
+.report-field{display:grid;gap:6px;font-size:13px;font-weight:700}
+.report-field input,.report-field select,.report-field textarea{box-sizing:border-box;width:100%;min-width:0;padding:11px 12px;border:1px solid #ddd6dc;border-radius:9px;background:#fff;color:#25232b;font:inherit;font-size:14px;font-weight:400}
+.report-field textarea{min-height:130px;resize:vertical;line-height:1.55}
+.report-field input::placeholder,.report-field textarea::placeholder{color:#aaa3ab}
+.report-dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:3px}
+.report-dialog-actions button{padding:10px 15px;border:1px solid #ded7dd;border-radius:9px;background:#fff;color:#4e4850;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.report-dialog-actions .report-submit{border-color:var(--color-brand,#d94670);background:var(--color-brand,#d94670);color:#fff}
+.report-dialog-actions button:disabled{opacity:.55;cursor:wait}
+.report-feedback{min-height:20px;margin:0;color:#6b626b;font-size:13px;line-height:1.5}
+.report-feedback.error{color:#b42318}
+.report-feedback.success{color:#167346}
+.report-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+@media(max-width:600px){.report-launcher{right:14px;bottom:14px;padding:11px 14px;font-size:13px}.report-dialog form{padding:18px}.report-dialog{max-height:90vh}}

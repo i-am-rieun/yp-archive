@@ -1,0 +1,64 @@
+.couples-page{ padding: .75rem 0 4rem;   background-color: var(--color-brand-soft); }
+.couples-intro{ text-align: center; margin-bottom: 2rem; }
+.couples-intro h1{ margin: 0.5rem 0; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.couples-intro p{ color: var(--muted); font-size: 0.85rem; }
+.couples-tabs{ display: flex; justify-content: center; gap: 0.75rem; margin-top: 1rem; margin-bottom: 0; }
+.couple-tab{ padding: 0.5rem 1.2rem; border: 1px solid var(--line); border-radius: 999px; background: var(--color-surface); color: var(--muted); font-size: 0.85rem; cursor: pointer; }
+.couple-tab.active{ background: var(--color-brand-deep, var(--pink)); color: var(--color-surface); border-color: var(--color-brand-deep, var(--pink)); }
+.couple-tab[data-type="reality"].active{ background: var(--color-status-blue-dark, var(--color-status-blue)); border-color: var(--color-status-blue-dark, var(--color-status-blue)); }
+.couple-tab[data-type="past"].active{ background: var(--color-text-deep); border-color: var(--color-text-deep); }
+.couples-grid{ display: grid; gap: 1rem; }
+.couple-card{ border: 1px solid var(--line); border-radius: 1rem; overflow: hidden; background: var(--color-surface); box-shadow: 0 5px 15px var(--shadow-card-subtle); }
+.couple-header{ display: flex; align-items: center; gap: 0.5rem; padding: 1rem 1.2rem; background: var(--color-brand-tint); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.couple-badge{ display: inline-flex; padding: 0.25rem 0.6rem; border-radius: 999px; font-weight: 700; font-size: 0.85rem; }
+.couple-badge.final{ background: var(--color-brand-deep, var(--color-brand)); color: var(--color-surface); }
+.couple-badge.reality{ background: var(--color-status-blue-dark, var(--color-status-blue)); color: var(--color-surface); }
+.couple-season{ color: var(--muted); font-size: 0.85rem; }
+.couple-body{ display: grid; grid-template-columns: 1fr 1fr; }
+.couple-member{ padding: 1.2rem; }
+.couple-member + .couple-member{ border-left: 1px solid var(--line); }
+.couple-member h3{ margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--pink); }
+.couple-member p{ margin: 0.25rem 0; color: var(--muted); font-size: 0.85rem; }
+.couple-member a{ color: var(--pink); text-decoration: none; }
+.couple-member a:hover{ text-decoration: none; }
+.couple-date{ margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--line); font-size: 0.85rem; color: var(--muted); }
+.empty-state{ padding: 3rem; text-align: center; color: var(--muted); }
+
+@media (max-width: 680px) {
+  .couple-body{ grid-template-columns: 1fr; }
+  .couple-member + .couple-member{ border-left: 0; border-top: 1px solid var(--line); }
+  .couple-header{ align-items: center; gap: 0.4rem; }
+  .couple-header .couple-badge{ flex: 0 0 auto; }
+  .couple-header .couple-heart{ flex: 0 0 auto; margin-left: 0.1rem; }
+}
+.couple-member .male-cast-link, .couple-member .male-cast-link:visited{ color: var(--color-status-blue-dark); }
+.couple-member .male-cast-link:hover, .couple-member .male-cast-link:focus{ color: var(--color-status-blue-dark); }
+.couple-guide{ margin: 0 0 1rem; padding: .9rem 1rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--color-surface); color: var(--muted); font-size: 0.85rem; }
+
+/* Align couples archive hero height with hape_index.html */
+.hero{padding-bottom:1.25rem;background:var(--color-brand-soft)!important}
+.hero .hero-inner{background:transparent}
+
+/* Shared design tokens: requested archive navigation, search, and list zones */
+.hero, .search-area, .results, .couples-tabs, .couples-page, .season-info-grid, .season-cast-grid{
+  background-color: var(--color-brand-soft, var(--color-brand-soft));
+}
+
+/* 현재·예전 커플 배지: 배경은 투명하게 두고 상태 색상은 테두리와 글자에 적용 */
+.couple-badge.past{
+  background: transparent;
+  border: 1px solid var(--color-text-deep);
+  color: var(--color-text-deep);
+}
+.couple-badge.current{
+  background: transparent;
+  border: 1px solid #267447;
+  color: #267447;
+}
+
+/* 현재 커플 탭 활성화 색상 */
+.couple-tab[data-type="current"].active{
+  background: #267447;
+  border-color: #267447;
+  color: var(--color-surface);
+}

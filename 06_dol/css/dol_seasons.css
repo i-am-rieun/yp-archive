@@ -1,0 +1,338 @@
+.season-main{padding:2rem 0 4rem}
+.season-card-page{--profile-accent:var(--color-brand-strong);--profile-accent-light:var(--color-brand-soft);--profile-accent-soft:var(--color-brand-pale);--profile-line:var(--color-brand-border)}
+.season-head-in{min-height:120px}
+.season-head-in h1{margin:.35rem 0;font-size:clamp(2rem,4vw,2.7rem);letter-spacing:-.055em}
+.season-special{margin:.4rem 0 0;color:var(--muted);font-size:0.85rem}
+.season-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.season-value{margin:0;line-height:1.7;overflow-wrap:anywhere}
+.season-link-list{display:grid;gap:.65rem}
+.season-replay-link{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.15rem;border:1px solid var(--profile-line);border-radius:.85rem;background:var(--profile-accent-soft);color:var(--text);text-decoration:none;transition:background .2s ease,border-color .2s ease}
+.season-replay-link:hover{background:var(--color-brand-tint-strong);border-color:var(--color-brand-border-mid)}
+.season-replay-link span:last-child{color:var(--profile-accent);white-space:nowrap;font-weight:700}
+.season-news-count{margin:.35rem 0 0;color:var(--muted);font-size:0.85rem}
+.news-list{display:grid;gap:0}
+.news-item{display:flex;flex-direction:column;align-items:flex-start;gap:.28rem;padding:1rem 0;border-bottom:1px solid var(--profile-line)}
+.news-item>a{color:var(--text);font-weight:650;line-height:1.55;text-decoration:none}
+.news-item>a:hover{color:var(--profile-accent)}
+.news-meta{color:var(--muted);font-size:0.85rem;line-height:1.5}
+.news-pagination{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.4rem;margin-top:1.5rem}
+.news-page-btn{min-width:2.35rem;height:2.35rem;padding:0 .6rem;border:1px solid var(--profile-line);border-radius:.65rem;background:var(--color-surface);color:var(--text);font:inherit;cursor:pointer}
+.news-page-btn:hover{border-color:var(--profile-accent);color:var(--profile-accent)}
+.news-page-btn.active{border-color:var(--profile-accent);background:var(--profile-accent);color:var(--color-surface);font-weight:700}
+.season-empty{padding:1.25rem 0;color:var(--muted)}
+.season-detail-link{color:inherit;text-decoration:none;transition:color .2s ease}
+.season-detail-link:hover{color:var(--pink);text-decoration:none}
+
+
+/* 기수 상세 출연자 목록 */
+.season-cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem}
+.season-cast-card{display:flex;flex-direction:column;align-items:center;gap:.45rem;padding:.85rem .65rem;border:1px solid var(--profile-line);border-radius:1rem;background:var(--color-surface);text-decoration:none;color:var(--text);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.season-cast-card:hover{transform:translateY(-2px);border-color:var(--color-brand-border-mid);box-shadow:0 5px 18px var(--color-shadow-alpha-season)}
+.season-cast-photo{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:.7rem;background:var(--color-brand-soft);color:var(--color-brand-strong);font-size:1.8rem;font-weight:800}
+.season-cast-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto}
+.season-cast-photo.no-image{background:var(--color-brand-soft)}
+.season-cast-name{font-weight:750;text-align:center;overflow-wrap:anywhere}
+.season-cast-gender{color:var(--muted);font-size:0.85rem}
+
+
+/* Season page refinements */
+#seasonTitle { margin-bottom: .25rem; }
+#seasonPrevNext { margin-top: .85rem; }
+
+/* 요청 반영: 기수 헤더의 하트 테마 배경 */
+.season-card-page .profile-head {
+  background-color: var(--color-brand-tint-soft) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='72' viewBox='0 0 84 72'%3E%3Cpath d='M15 13 C15 7 23 6 27 12 C31 6 39 7 39 13 C39 20 27 27 27 27 C27 27 15 20 15 13Z' fill='%23e98aa7' fill-opacity='.18'/%3E%3Cpath d='M54 43 C54 37 62 36 66 42 C70 36 78 37 78 43 C78 50 66 57 66 57 C66 57 54 50 54 43Z' fill='%23d94670' fill-opacity='.13'/%3E%3C/svg%3E") !important;
+  background-repeat: repeat !important;
+  background-size: 84px 72px !important;
+}
+.season-card-page .season-head-in {
+  position: relative;
+  z-index: 1;
+}
+
+/* profile 페이지와 동일한 섹션 제목 표시 */
+.season-card-page .section-heading h2 {
+  display: flex;
+  align-items: baseline;
+  gap: .2rem;
+}
+.season-card-page .section-marker {
+  color: var(--profile-accent, var(--color-status-pink));
+  margin-right: .15rem;
+  font-weight: 800;
+}
+.season-breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: 0 auto 1rem;
+  color: var(--profile-text, var(--color-text-strong));
+  font-size: 0.85rem;
+}
+.season-breadcrumbs [aria-current="page"] {
+  color: var(--profile-text, var(--color-text-strong));
+  font-weight: 700;
+}
+
+/* 프로필 페이지와 동일한 관련 뉴스 행 디자인 */
+.season-card-page #seasonNews {
+  display: grid;
+  gap: .65rem;
+  padding: .25rem 0;
+}
+.season-card-page #seasonNews .news-item {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--profile-line);
+  border-radius: .45rem;
+  overflow: hidden;
+  background: var(--color-brand-pale);
+  box-shadow: none;
+}
+.season-card-page #seasonNews .news-row-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: .72rem .9rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.season-card-page #seasonNews .news-title {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+.season-card-page #seasonNews .news-publisher {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.season-card-page #seasonNews .news-date {
+  grid-column: 3;
+  grid-row: 1;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: right;
+  white-space: nowrap;
+}
+.season-card-page #seasonNews .news-open {
+  grid-column: 4;
+  grid-row: 1;
+  color: var(--profile-accent);
+  text-align: center;
+  font-size: 0.85rem;
+}
+.season-card-page #seasonNews .news-row-link:hover .news-title,
+.season-card-page #seasonNews .news-row-link:hover .news-publisher,
+.season-card-page #seasonNews .news-row-link:hover .news-date,
+.season-card-page #seasonNews .news-row-link:hover .news-open {
+  color: var(--profile-accent);
+  text-decoration: none;
+}
+.season-card-page #seasonNews .news-row-link:focus-visible {
+  outline: 2px solid var(--profile-accent);
+  outline-offset: -2px;
+}
+.season-card-page .news-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .35rem;
+  margin-top: 1.2rem;
+}
+.season-card-page .news-page {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 .45rem;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.season-card-page .news-page:hover:not(:disabled) { border-color: var(--profile-line); }
+.season-card-page .news-page.is-active { background: var(--profile-accent); color: var(--color-surface); }
+.season-card-page .news-page-arrow { border-color: var(--profile-line); color: var(--profile-accent); font-size: 1.15rem; }
+.season-card-page .news-page:disabled { opacity: .35; cursor: default; }
+
+
+/* 수정: 남성 출연자 배경을 profile의 연한 파란색과 동일하게 적용 */
+.season-card-page .season-cast-photo.gender-male,
+.season-card-page .season-cast-photo.gender-male.no-image,
+.season-card-page .season-cast-photo.gender-male img {
+  background-color: var(--color-status-blue-tint) !important;
+}
+.season-card-page .season-cast-photo.gender-male,
+.season-card-page .season-cast-photo.gender-male.no-image {
+  color: var(--color-status-blue-mid) !important;
+}
+
+/* 여성 출연자: 투명 영역에 연한 분홍색 배경을 적용 */
+.season-card-page .season-cast-photo.gender-female,
+.season-card-page .season-cast-photo.gender-female.no-image,
+.season-card-page .season-cast-photo.gender-female img {
+  background-color: var(--color-status-pink-pale) !important;
+}
+.season-card-page .season-cast-photo.gender-female,
+.season-card-page .season-cast-photo.gender-female.no-image {
+  color: var(--color-status-pink-deep) !important;
+}
+
+/* seasons/profile 공통 상단 위치 내비게이션 */
+.detail-breadcrumbs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .7rem;
+  width: 100%;
+  margin: 0 0 1.1rem;
+  padding: .2rem 0 .75rem;
+  box-sizing: border-box;
+  color: var(--text, var(--color-text-strong));
+  font-size: 0.85rem;
+}
+.detail-back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  color: var(--muted, var(--color-text-muted-neutral));
+  font-weight: 650;
+  text-decoration: none;
+}
+.detail-back-link:hover,
+.detail-back-link:focus-visible {
+  color: var(--profile-accent, var(--color-brand-strong));
+  text-decoration:none;
+}
+.detail-breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  color: var(--muted, var(--color-text-muted-neutral));
+  line-height: 1.5;
+}
+.detail-breadcrumb-trail a {
+  color: var(--profile-accent, var(--color-brand-strong));
+  text-decoration: none;
+  font-weight: 650;
+}
+.detail-breadcrumb-trail a:hover { text-decoration: none; }
+.detail-breadcrumb-trail [aria-current="page"] {
+  color: var(--text, var(--color-text-strong));
+  font-weight: 750;
+}
+.detail-breadcrumb-separator { color: var(--color-text-muted-pale); }
+
+
+
+/* 반응형 규칙: 하나의 최상위 @media 블록으로 통합 */
+@media (max-width: 680px) {
+  .season-info-grid { grid-template-columns: 1fr; }
+  .season-replay-link { padding: .9rem; }
+  .season-head-in { min-height: 0; }
+  .news-pagination { gap: .3rem; }
+  .news-page-btn { min-width: 2.1rem; height: 2.1rem; }
+
+  @media (max-width: 640px) {
+    .season-card-page #seasonNews .news-row-link {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: .25rem .6rem;
+    }
+    .season-card-page #seasonNews .news-title {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      white-space: normal;
+    }
+    .season-card-page #seasonNews .news-publisher {
+      grid-column: 1;
+      grid-row: 2;
+      justify-self: start;
+      text-align: left;
+    }
+    .season-card-page #seasonNews .news-date { grid-column: 2; grid-row: 2; }
+    .season-card-page #seasonNews .news-open { grid-column: 3; grid-row: 2; }
+
+    .detail-breadcrumbs { gap: .5rem; margin-bottom: .85rem; font-size: 0.85rem; }
+  }
+
+  @media (max-width: 480px) {
+    .season-cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+    .season-cast-card { padding: .65rem .5rem; }
+  }
+}
+
+/* 돌싱글즈 전용 기수 상세 탐색. 공통 경로/이동 스타일은 루트 root_detail-nav.css에서 관리합니다. */
+
+/* 기수 제목과 이전/이후 기수 버튼 중앙 정렬 */
+.season-card-page .season-head-in > div {
+  width: 100%;
+  text-align: center;
+}
+.season-card-page #seasonTitle { text-align: center; }
+.season-card-page #seasonSpecial { text-align: center; }
+.season-card-page #seasonPrevNext {
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+}
+
+/* 기수 페이지 브레드크럼을 프로필 페이지와 같은 위치·스타일로 표시 */
+.season-main > .season-breadcrumbs {
+  width: 100%;
+  margin: 0 0 1.1rem;
+  padding: .75rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.season-main > .season-breadcrumbs a,
+.season-main > .season-breadcrumbs a:hover,
+.season-main > .season-breadcrumbs a:focus-visible {
+  color: var(--color-status-pink-soft);
+  text-decoration: none;
+}
+.season-main > .season-breadcrumbs a { font-weight: 700; }
+@media (max-width: 640px) {
+  .season-main > .season-breadcrumbs { width: 100%; margin-bottom: .85rem; padding: .55rem 0; }
+}
+
+/* 기수 이동 내비게이션 */
+.season-navigation{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin:0 0 1rem;padding:.75rem 1rem;border:1px solid var(--line);border-radius:.75rem;background:var(--color-surface);}
+.season-navigation-link{display:inline-flex;align-items:center;gap:.35rem;color:var(--pink);font-size:0.85rem;font-weight:700;text-decoration:none;}
+.season-navigation-link:hover{}
+.season-navigation-link.is-disabled{color:var(--muted);opacity:.45;pointer-events:none;}
+.season-navigation-current{color:var(--text);font-size:0.85rem;font-weight:700;}
+@media(max-width:480px){.season-navigation{gap:.4rem;padding:.65rem .75rem}.season-navigation-link,.season-navigation-current{font-size:0.85rem}}
+
+/* 남성 출연자 카드: 기본 테두리는 파란색, 마우스 오버 시 진한 파란색 */
+.season-cast-card:has(.season-cast-photo.gender-male) {
+  border-color: var(--color-status-blue-border) !important;
+}
+.season-cast-card:has(.season-cast-photo.gender-male):hover {
+  border-color: var(--color-status-blue-dark) !important;
+}

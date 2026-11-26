@@ -1,0 +1,95 @@
+/* 연애도감 공통 디자인 토큰
+   공통 UI의 기본값입니다. 프로그램별 테마 변수는 각 프로그램 CSS에서 별도로 정의합니다. */
+
+:root {
+  --color-brand: #D94670;
+  --color-brand-hover: #D94670;
+  --color-brand-soft: #fffeff;
+  --color-page-bg: #FFFEFF;
+  --color-surface: #FFFFFF;
+  --color-text: #25232B;
+  --color-text-muted: #6F6B78;
+  --color-border: #E6E4EC;
+  --color-overlay: rgba(37, 35, 43, 0.42);
+  --color-shadow-rgb: 37, 35, 43;
+  --shadow-card: 0 8px 24px rgba(var(--color-shadow-rgb), 0.06);
+  --shadow-popover: 0 14px 35px rgba(var(--color-shadow-rgb), 0.08);
+  --focus-ring: 0 0 0 3px rgba(255, 79, 129, 0.24);
+
+  /* 기존 프로그램 CSS 변수명과의 호환 alias */
+  --text: var(--color-text);
+  --profile-text: var(--color-text);
+  --profile-muted: var(--color-text-muted);
+
+  /* 01_solo 보조 색상 토큰: 페이지 전반의 색상은 이 파일에서 관리합니다. */
+  --color-brand-strong: #D94670;
+  --color-brand-deep: #BD315A;
+  --color-brand-muted: #D96788;
+  --color-brand-pale: #FFF8FA;
+  --color-brand-tint: #FFF4F5;
+  --color-brand-tint-strong: #FFF1F4;
+  --color-brand-tint-soft: #FFF5F8;
+  --color-brand-tint-warm: #FFFAFA;
+  --color-brand-tint-cool: #fffeff;
+  --color-brand-border: #F0DFE4;
+  --color-brand-border-soft: #EADFE1;
+  --color-brand-border-pale: #E5D9DC;
+  --color-brand-border-mid: #E8B9C7;
+  --color-brand-border-strong: #EFB8C5;
+  --color-brand-pink-light: #F5DCE4;
+  --color-brand-pink-soft: #F9D2DE;
+  --color-brand-pink-bg: #FBE8ED;
+  --color-brand-pink-pale: #F5FBFE;
+  --color-text-strong: #342B2E;
+  --color-text-deep: #33282A;
+  --color-text-warm: #30282A;
+  --color-text-muted-warm: #897C7E;
+  --color-text-muted-soft: #806E74;
+  --color-text-muted-mid: #704B54;
+  --color-text-muted-light: #9A8C90;
+  --color-text-muted-pale: #B8A9AE;
+  --color-text-muted-neutral: #777777;
+  --color-text-neutral: #333333;
+  --color-text-black: #000000;
+  --color-status-blue: #3885B9;
+  --color-status-blue-dark: #2563A8;
+  --color-status-blue-deep: #2B6792;
+  --color-status-blue-mid: #2478B8;
+  --color-status-blue-bright: #249FD3;
+  --color-status-blue-pale: #EAF7FD;
+  --color-status-blue-soft: #F5FBFE;
+  --color-status-blue-tint: #EEF7FF;
+  --color-status-blue-border: #CFE9F5;
+  --color-status-blue-border-light: #CCE7F5;
+  --color-status-blue-light: #69C8E8;
+  --color-status-blue-text: #137DA9;
+  --color-status-blue-muted: #EAF4FF;
+  --color-status-pink: #EF4F72;
+  --color-status-pink-deep: #CF3268;
+  --color-status-pink-muted: #AD4B69;
+  --color-status-pink-soft: #E94F83;
+  --color-status-pink-pale: #FFF0F5;
+  --shadow-card-subtle: 0 5px 15px rgba(122, 75, 85, 0.06);
+  --shadow-card-soft: 0 3px 10px rgba(64, 38, 45, 0.07);
+  --shadow-card-medium: 0 3px 10px rgba(217, 70, 112, 0.18);
+  --shadow-header: 0 0 0 rgba(0, 0, 0, 0);
+  --color-header-bg: rgba(255, 255, 255, 0.97);
+  --color-header-border: rgba(234, 221, 225, 0.72);
+  --color-surface-translucent: rgba(255, 250, 251, 0.94);
+  --color-surface-glass: rgba(255, 255, 255, 0.62);
+  --color-shadow-rgb-warm: 80, 45, 55;
+  --color-shadow-rgb-profile: 40, 35, 38;
+  --color-shadow-rgb-season: 50, 20, 30;
+  --color-shadow-alpha-035: rgba(64, 38, 45, 0.035);
+  --color-shadow-alpha-04: rgba(64, 38, 45, 0.04);
+  --color-shadow-alpha-05: rgba(80, 45, 55, 0.05);
+  --color-shadow-alpha-07: rgba(64, 38, 45, 0.07);
+  --color-shadow-alpha-08: rgba(80, 45, 55, 0.08);
+  --color-shadow-alpha-10: rgba(40, 35, 38, 0.10);
+  --color-shadow-alpha-12: rgba(64, 38, 45, 0.12);
+  --color-shadow-alpha-season: rgba(50, 20, 30, 0.07);
+  --color-shadow-alpha-brand: rgba(217, 70, 112, 0.18);
+}
+
+/* 링크 기본 스타일: 브라우저 기본 밑줄 방지 */
+a { text-decoration: none; }

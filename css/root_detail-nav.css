@@ -1,0 +1,167 @@
+/* 연애도감 공통 상세 탐색 UI: 상세 경로, 이전/다음 이동, 관련 콘텐츠 링크 */
+
+/* 일반 경로 탐색 */
+.breadcrumbs,
+.detail-breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  color: var(--color-text-muted, #6F6B78);
+  line-height: 1.5;
+}
+.breadcrumbs {
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  font-size: 0.85rem;
+}
+.breadcrumbs a,
+.detail-breadcrumb-trail a,
+.profile-breadcrumbs a {
+  color: var(--color-brand, #D94670);
+  text-decoration: none;
+  font-weight: 700;
+}
+.breadcrumbs a:hover,
+.detail-breadcrumb-trail a:hover,
+.profile-breadcrumbs a:hover {
+  
+  
+}
+.breadcrumbs [aria-current="page"],
+.detail-breadcrumb-trail [aria-current="page"],
+.profile-breadcrumbs [aria-current="page"] {
+  color: var(--color-text, #25232B);
+  font-weight: 750;
+}
+
+/* 상세 페이지 상단의 뒤로 가기 + 경로 */
+.detail-breadcrumbs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .7rem;
+  width: 100%;
+  margin: 0 0 1.1rem;
+  padding: .2rem 0 .75rem;
+  box-sizing: border-box;
+  color: var(--color-text, #25232B);
+  font-size: 0.85rem;
+}
+.detail-back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  color: var(--color-text-muted, #6F6B78);
+  font-weight: 650;
+  text-decoration: none;
+}
+.detail-back-link:hover,
+.detail-back-link:focus-visible {
+  color: var(--color-brand, #D94670);
+  
+  
+}
+.detail-breadcrumb-separator { color: var(--color-text-muted-pale, #B8A9AE); }
+
+/* 프로필 등 상세 본문 안의 경로 안내 */
+.profile-breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .55rem;
+  width: 100%;
+  margin: 0 0 1.1rem;
+  padding: .75rem 0;
+  box-sizing: border-box;
+  color: var(--color-text-muted, #6F6B78);
+  font-size: 0.85rem;
+}
+.profile-main > .profile-breadcrumbs { display: flex; }
+
+/* 이전/다음 항목 및 기수 이동 */
+.detail-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.detail-pagination a,
+.detail-pagination .detail-nav-button,
+.detail-pagination .season-nav-button,
+.related-couple-link,
+.season-cast-link-list a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .8rem;
+  border: 1px solid var(--color-brand-border, #F0DFE4);
+  border-radius: .65rem;
+  text-decoration: none;
+  color: var(--color-text, #25232B);
+  background: var(--color-surface, #FFFFFF);
+}
+.detail-pagination .detail-nav-button,
+.detail-pagination .season-nav-button {
+  min-width: 7.5rem;
+  padding: .65rem 1rem;
+  border-color: var(--color-brand, #D94670);
+  border-radius: 999px;
+  background: var(--color-brand, #D94670);
+  color: var(--color-surface, #FFFFFF);
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 3px 10px var(--color-shadow-alpha-brand, rgba(217, 70, 112, .18));
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.detail-pagination .detail-nav-button:hover,
+.detail-pagination .season-nav-button:hover {
+  border-color: var(--color-brand-deep, #BD315A);
+  background: var(--color-brand-deep, #BD315A);
+  color: var(--color-surface, #FFFFFF);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+.detail-pagination .detail-nav-button:focus-visible,
+.detail-pagination .season-nav-button:focus-visible {
+  outline: 2px solid var(--color-brand, #D94670);
+  outline-offset: 3px;
+}
+
+/* 관련 커플 및 출연자 링크 */
+.related-couples,
+.season-cast-links {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid var(--color-border, #E6E4EC);
+  border-radius: 1rem;
+}
+.related-couples-list,
+.season-cast-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .75rem;
+}
+.related-couple-link,
+.season-cast-link-list a {
+  border-color: var(--color-brand-border-pale, #E5D9DC);
+  border-radius: .65rem;
+}
+.related-couple-link:hover,
+.season-cast-link-list a:hover {
+  border-color: var(--color-brand, #D94670);
+  color: var(--color-brand, #D94670);
+}
+
+@media (max-width: 640px) {
+  .breadcrumbs { font-size: 0.85rem; }
+  .detail-breadcrumbs { gap: .5rem; margin-bottom: .85rem; font-size: 0.85rem; }
+  .detail-pagination a,
+  .detail-pagination .detail-nav-button,
+  .detail-pagination .season-nav-button,
+  .related-couple-link,
+  .season-cast-link-list a { padding: .5rem .65rem; font-size: 0.85rem; }
+  .profile-breadcrumbs { margin-bottom: .85rem; }
+}

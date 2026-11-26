@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="분홍색 하트">
+  <path d="M32 57.2 8.8 35.1C-3.1 23.8 4.7 5.5 19.1 5.5c5.6 0 10.2 2.8 12.9 7.2 2.7-4.4 7.3-7.2 12.9-7.2 14.4 0 22.2 18.3 10.3 29.6L32 57.2Z" fill="#F43F78"/>
+  <path d="M13.8 23.8c1.2-6.1 5.3-9.8 10.7-10.3" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" opacity=".95"/>
+  <circle cx="13.4" cy="29.1" r="2.1" fill="#FFFFFF" opacity=".95"/>
+</svg>

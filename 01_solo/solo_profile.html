@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>나는 SOLO 출연자 프로필 | 연프도감</title>
+<meta name="description" content="나는 SOLO 출연자의 프로필과 방송 정보, 어록 및 관련 소식을 확인할 수 있는 연프도감 아카이브입니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="나는 SOLO 출연자 프로필 | 연프도감">
+<meta property="og:description" content="나는 SOLO 출연자의 프로필과 방송 정보, 어록 및 관련 소식을 확인할 수 있는 연프도감 아카이브입니다.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../css/root_color.css">
+<link rel="stylesheet" href="../css/root_detail-nav.css">
+<link rel="stylesheet" href="css/solo_index.css">
+<link rel="stylesheet" href="css/solo_profile.css">
+<link rel="stylesheet" href="../css/root_header.css">
+  <script src="../js/program-config.js" defer></script>
+  <script src="../js/archive-common.js" defer></script>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../css/user-report.css">
+</head>
+<body data-program="solo" id="top">
+  <header class="header archive-header">
+  <div class="container archive-header-main">
+    <a href="../index.html" class="logo archive-brand" aria-label="연프도감 홈"><span class="archive-brand-letter">연</span><span class="archive-brand-letter">프</span><span class="archive-brand-letter">도</span><span class="archive-brand-letter">감</span></a>
+    <div class="header-font-controls" aria-label="글꼴 크기 조정"><span class="font-controls-label">글꼴 크기 조정</span>
+      <button class="header-font-btn" type="button" id="fontDecrease" aria-label="글꼴 크기 줄이기">−</button>
+      <button class="header-font-btn" type="button" id="fontReset" aria-label="글꼴 크기 기본값">O</button>
+      <button class="header-font-btn" type="button" id="fontIncrease" aria-label="글꼴 크기 키우기">+</button>
+    </div>
+  </div>
+  <div class="archive-subnav-wrap">
+    <div class="container archive-subnav">
+      <div class="archive-breadcrumb" aria-label="아카이브"><a href="../01_solo/solo_index.html" aria-current="page">나는 솔로 아카이브</a></div>     
+ <nav class="site-nav" aria-label="나는 솔로 아카이브 메뉴">
+        <a href="solo_index.html" data-nav="cast" aria-current="page">출연자</a>
+        <a href="solo_couples.html" data-nav="couples">커플</a>
+      </nav>
+    </div>
+  </div>
+</header>
+  <main class="profile-main container">
+
+    <div id="profileLoading" class="profile-state">프로필을 불러오는 중입니다.</div>
+
+    <article id="profileCard" class="profile-card hidden">
+      <div class="profile-head">
+        <div class="profile-head-in">
+          <div id="profileAvatar" class="avatar"></div>
+          <div>
+            <p id="profileSeason" class="profile-season"></p>
+            <h1 id="profileName"></h1>
+            <p id="profileGender" class="profile-gender"></p>
+          </div>
+        </div>
+      </div>
+
+      <section class="profile-section">
+        <div class="section-heading">
+          <div class="section-heading-copy">
+            <h2><span class="section-marker" aria-hidden="true">|</span> 출연자 정보 <span id="broadcastInfoLabel" class="broadcast-info-label">방송 당시</span></h2>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <section class="content-card profile-info">
+            <dl id="profileInfoOriginal"></dl>
+          </section>
+          <section class="content-card profile-social-card">
+            <h3>소셜 미디어</h3>
+            <div id="profileLinks" class="profile-links"></div>
+          </section>
+        </div>
+
+        <section class="note-card">
+          <h3>참고사항</h3>
+          <p id="profileFeature"></p>
+        </section>
+
+      </section>
+
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <section class="profile-section">
+        <div class="section-heading">
+          <div class="section-heading-copy">
+            <h2><span class="section-marker" aria-hidden="true">|</span> 방송 기록</h2>
+          </div>
+        </div>
+
+        <div id="broadcastSpoiler" class="spoiler-wrap is-locked">
+          <div class="spoiler-content">
+            <div class="record-grid">
+              <section class="content-card">
+                <div id="profileRecords"></div>
+              </section>
+
+              <section class="content-card">
+                <h3>어록 모음</h3>
+                <div id="profileQuotes" class="quote-list"></div>
+
+              </section>
+            </div>
+          </div>
+
+          <div class="spoiler-overlay">
+            <p>방송 기록에는 스포일러가 포함되어 있습니다.</p>
+            <button id="spoilerUnlock" type="button">스포일러 보기</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <section id="profileNewsSection" class="profile-section">
+        <div class="section-heading">
+          <div class="section-heading-copy">
+            <h2><span class="section-marker" aria-hidden="true">|</span> 관련 뉴스</h2>
+          </div>
+        </div>
+        <div id="profileNews" class="news-list"></div>
+        <nav id="profileNewsPagination" class="news-pagination" aria-label="관련 뉴스 페이지"></nav>
+      </section>
+    </article>
+  </main>
+  <footer class="footer-with-top"><span>연프도감 · 프로그램 아카이브</span> <a class="footer-top" href="#top">맨 위로 ↑</a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/user-report.js"></script>
+
+  
+  
+  <script src="js/solo_profile.js"></script>
+  
+
+
+<script>
+/* 일반 페이지 콘텐츠 복사 제한: 텍스트 선택은 허용하고 복사 이벤트만 차단합니다. 입력 영역은 예외입니다. */
+(() => {
+  "use strict";
+  document.addEventListener("copy", (event) => {
+    const target = event.target;
+    if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"], [role="textbox"]')) {
+      return;
+    }
+    const selection = window.getSelection();
+    if (selection && !selection.isCollapsed) {
+      event.preventDefault();
+    }
+  }, true);
+})();
+</script>
+</body>
+</html>
+

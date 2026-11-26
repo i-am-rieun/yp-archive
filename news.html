@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff">
+  <title>최신소식 | 출연자 뉴스 — 연프도감</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="최신소식 | 출연자 뉴스 — 연프도감">
+  <meta property="og:description" content="연애 리얼리티 프로그램 출연자와 관련된 뉴스를 프로그램별로 모아 최신순으로 확인하세요.">
+  <meta name="twitter:card" content="summary">
+  <meta name="description" content="연애 리얼리티 프로그램 출연자와 관련된 뉴스를 프로그램별로 모아 최신순으로 확인하세요.">
+  <link rel="stylesheet" href="css/root_color.css">
+  <link rel="stylesheet" href="css/root_header.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/user-report.css">
+</head>
+<body id="top">
+  <header class="header archive-header">
+    <div class="container archive-header-main">
+      <a href="index.html" class="archive-brand" aria-label="연프도감 홈">
+        <span class="archive-brand-letter" aria-hidden="true">연</span><span class="archive-brand-letter" aria-hidden="true">프</span><span class="archive-brand-letter" aria-hidden="true">도</span><span class="archive-brand-letter" aria-hidden="true">감</span>
+      </a>
+      <div class="header-font-controls" aria-label="글꼴 크기 조정">
+        <span class="font-controls-label">글꼴 크기 조정</span>
+        <button class="header-font-btn" type="button" id="fontDecrease" aria-label="글꼴 크기 줄이기">−</button>
+        <button class="header-font-btn" type="button" id="fontReset" aria-label="글꼴 크기 기본값">O</button>
+        <button class="header-font-btn" type="button" id="fontIncrease" aria-label="글꼴 크기 키우기">+</button>
+      </div>
+    </div>
+    <div class="archive-subnav-wrap">
+      <div class="container archive-subnav">
+        <div class="archive-breadcrumb" aria-label="현재 위치">
+          <a href="index.html">연프도감</a><span aria-hidden="true">></span><a href="news.html" aria-current="page"><span>출연자 뉴스</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="news-hero">
+      <div class="container news-hero-inner">
+        <h1>출연자 <em>뉴스</em></h1>
+        <p class="lead">좋아하는 연애 프로그램, 출연자와 관련된 최신 소식을 여기에서 확인하세요.</p>
+      </div>
+    </section>
+
+    <section class="news-archive-section" aria-labelledby="newsArchiveTitle">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2 id="newsArchiveTitle">전체 뉴스</h2>
+            <p>공개된 출연자 뉴스 링크를 게시일 기준으로 정렬합니다.</p>
+          </div>
+          <span class="section-count" id="newsTotalCount" aria-live="polite">불러오는 중</span>
+        </div>
+
+        <div class="news-toolbar" role="search">
+          <label class="news-search" for="newsSearchInput">
+            <span aria-hidden="true">⌕</span>
+            <input id="newsSearchInput" type="search" placeholder="뉴스 제목, 언론사, 출연자로 검색" autocomplete="off">
+          </label>
+          <div class="program-filter">
+            <label class="program-filter-label" for="newsProgramFilter">프로그램</label>
+            <select id="newsProgramFilter">
+              <option value="all">전체 프로그램</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="news-result-meta">
+          <p id="newsResultSummary" aria-live="polite">뉴스를 불러오는 중입니다.</p>
+          <button type="button" class="news-reset" id="newsFilterReset">필터 초기화</button>
+        </div>
+
+        <div class="news-list" id="newsList" aria-live="polite" aria-busy="true">
+          <p class="news-state">등록된 뉴스를 불러오는 중입니다.</p>
+        </div>
+
+        <div class="news-more-wrap" id="newsMoreWrap" hidden>
+          <button type="button" class="news-more-button" id="newsLoadMore">뉴스 더 보기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main footer-with-top">
+      <span class="footer-note">연프도감 · 연애 프로그램 출연자 아카이브</span>
+      <a class="footer-top" href="#top">맨 위로 ↑</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+<script src="js/user-report.js"></script>
+  <script src="js/news.js"></script>
+
+<script>
+/* 일반 페이지 콘텐츠 복사 제한: 텍스트 선택은 허용하고 복사 이벤트만 차단합니다. 입력 영역은 예외입니다. */
+(() => {
+  "use strict";
+  document.addEventListener("copy", (event) => {
+    const target = event.target;
+    if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"], [role="textbox"]')) {
+      return;
+    }
+    const selection = window.getSelection();
+    if (selection && !selection.isCollapsed) {
+      event.preventDefault();
+    }
+  }, true);
+})();
+</script>
+</body>
+</html>

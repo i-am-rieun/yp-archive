@@ -1,0 +1,566 @@
+/* 출연자 프로필 본문 전용 스타일. 공통 헤더/상세 경로는 루트 CSS에서 관리합니다. */
+
+
+
+.back{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  margin-bottom:1.25rem;
+  color:var(--muted);
+  font-size:0.85rem;
+  text-decoration:none;
+  transition:color .2s ease;
+}
+
+.back:hover{
+  color:var(--pink);
+}
+
+.profile-state{
+  padding:4rem 1rem;
+  border:1px solid var(--line);
+  border-radius:1.1rem;
+  background:var(--color-surface);
+  text-align:center;
+  color:var(--muted);
+}
+
+.hidden{
+  display:none!important;
+}
+
+.profile-card{
+  overflow:hidden;
+  background:var(--color-surface);
+  --profile-accent:var(--color-status-pink);
+  --profile-accent-light:var(--color-brand-tint-strong);
+  --profile-accent-soft:var(--color-brand-pale);
+  --profile-line:var(--color-brand-border);
+  --profile-rule:var(--color-brand-border-strong);
+}
+
+
+
+.profile-head-in{
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:1.25rem;
+}
+
+.avatar{
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  overflow:hidden;
+  border:4px solid var(--color-surface);
+  border-radius:50%;
+  background:transparent;
+  color:var(--profile-accent);
+  font-size:2.2rem;
+  font-weight:800;
+}
+
+.avatar img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:transparent;
+}
+
+.profile-season{
+  margin:0;
+  color:var(--profile-accent);
+  font-size:0.85rem;
+  font-weight:700;
+}
+
+.profile-head h1{
+  margin:.35rem 0;
+  line-height:1.15;
+  letter-spacing:-.06em;
+}
+
+.profile-section{
+  margin:0 auto;
+}
+
+.section-heading{
+  display:flex;
+  align-items:flex-end;
+}
+
+.section-heading-copy{
+  flex:0 0 auto;
+}
+
+.section-kicker{
+  display:block;
+  margin:0 0 .15rem;
+  color:var(--profile-accent);
+  font-weight:800;
+  letter-spacing:.16em;
+  line-height:1.35;
+}
+
+.section-heading h2{
+  margin:0;
+  line-height:1.2;
+}
+
+
+
+.info-grid, .record-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+.content-card{
+  min-width:0;
+  border:1px solid var(--profile-line);
+}
+
+.content-card h3{
+  margin:0 0 1rem;
+  letter-spacing:-.03em;
+}
+
+.content-card .subheading{
+  margin-top:1.35rem;
+}
+
+.profile-info dl{
+  display:grid;
+  grid-template-columns:4.3rem 1fr;
+  gap:0;
+  margin:0;
+}
+
+.profile-info dt, .profile-info dd{
+  padding:.58rem 0;
+  border-bottom:1px dashed var(--profile-line);
+  line-height:1.45;
+}
+
+.profile-info dt{
+  color:var(--profile-muted);
+}
+
+.profile-info dd{
+  margin:0;
+  font-weight:600;
+}
+
+.profile-info dl > *:nth-last-child(-n/**/+2){
+  border-bottom:0;
+}
+
+.note-card{
+  border:1px solid var(--profile-line);
+}
+
+.note-card h3{
+  display:inline-block;
+  margin:0 0 .75rem;
+  padding:0;
+  background:transparent;
+  color:var(--profile-accent);
+  font-size:0.85rem;
+}
+
+.note-card p{
+  margin:0;
+  line-height:1.8;
+  white-space:pre-line;
+}
+
+.record-row{
+  display:grid;
+  grid-template-columns:7.2rem 1fr;
+  gap:.8rem;
+  padding:.62rem 0;
+  border-bottom:1px dashed var(--profile-line);
+}
+
+.record-row:last-child{
+  border-bottom:0;
+}
+
+.record-label{
+  color:var(--profile-muted);
+}
+
+/* 방송 기록의 첫 네 항목 라벨은 한 줄로 표시 */
+.record-label{
+  font-size:0.85rem;
+  letter-spacing:-.04em;
+  white-space:nowrap;
+}
+
+.record-value{
+  font-weight:600;
+}
+
+.quote-list{
+  display:grid;
+  gap:.65rem;
+}
+
+.quote-item{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:.5rem 1rem;
+  align-items:center;
+  padding:.2rem 0 .55rem;
+  border-bottom:1px dashed var(--profile-line);
+}
+
+.quote-item:last-child{
+  border-bottom:0;
+  padding-bottom:0;
+}
+
+.quote-text{
+  margin:0;
+  line-height:1.55;
+}
+
+.quote-episode{
+  color:var(--profile-muted);
+  font-size:0.85rem;
+  white-space:nowrap;
+}
+
+.empty-text{
+  margin:0;
+  color:var(--profile-muted);
+  font-size:0.85rem;
+  line-height:1.7;
+}
+
+.profile-links{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.profile-links a{
+  padding:.55rem .8rem;
+  border-radius:999px;
+  color:var(--profile-accent);
+  font-size:0.85rem;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.profile-links a:hover{
+  opacity:.85;
+}
+
+.news-list{
+  display:grid;
+}
+
+.news-item{
+  border:1px solid var(--profile-line);
+}
+
+.news-item a{
+  min-width:0;
+  color:var(--profile-text);
+  line-height:1.5;
+  text-decoration:none;
+}
+
+.news-item a::after{
+  margin-left:.35rem;
+  color:var(--profile-accent);
+}
+
+.news-item a:hover{
+  color:var(--profile-accent);
+}
+
+.news-meta{
+  grid-column:1;
+  line-height:1.4;
+  text-align:left;
+}
+
+.news-error{
+  margin:0;
+  padding:.9rem 1rem;
+  border-radius:.7rem;
+  background:var(--profile-accent-light);
+  color:var(--profile-accent);
+}
+
+.spoiler-wrap{position:relative;}
+.spoiler-content{transition:filter .2s ease;}
+.spoiler-wrap.is-locked .spoiler-content{filter:blur(7px);user-select:none;pointer-events:none;}
+.spoiler-overlay{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;padding:1rem;border-radius:1rem;background:var(--color-surface-glass);backdrop-filter:blur(2px);text-align:center;}
+.spoiler-overlay p{margin:0;color:var(--profile-text);font-size:0.85rem;font-weight:700;}
+.spoiler-overlay button{border:0;border-radius:999px;padding:.55rem 1rem;background:var(--profile-accent);color:var(--color-surface);font:inherit;font-size:0.85rem;font-weight:700;cursor:pointer;}
+.spoiler-overlay button:hover{opacity:.88;}
+.spoiler-wrap:not(.is-locked) .spoiler-overlay{display:none;}
+
+/* 남성 출연자: 파란색을 기본 테마로 적용 */
+.profile-male{
+  --profile-accent:var(--color-status-blue-bright);
+  --profile-accent-light:var(--color-status-blue-pale);
+  --profile-accent-soft:var(--color-status-blue-soft);
+  --profile-line:var(--color-status-blue-border);
+  --profile-rule:var(--color-status-blue-light);
+}
+
+@media(max-width:640px){
+  .profile-main{
+    padding:1.4rem 0 3rem;
+  }
+
+  
+
+  .profile-head-in{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .avatar{
+    width:7rem;
+    height:7rem;
+  }
+
+  
+
+  .profile-links{
+    padding-bottom:1.4rem;
+  }
+
+  .info-grid, .record-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-heading{
+    align-items:center;
+    gap:.7rem;
+  }
+
+  .section-rule{
+    height:1px;
+  }
+
+  .record-row{
+    grid-template-columns:6.4rem 1fr;
+  }
+
+  .quote-item{
+    grid-template-columns:1fr;
+  }
+
+  .quote-episode{
+    justify-self:start;
+  }
+}
+
+/* ===== Profile page visual refinement / shared site language ===== */
+.profile-main{padding:2rem 0 5rem;}
+.profile-card{max-width:1100px;margin:0 auto;border:1px solid var(--profile-line);border-radius:20px;box-shadow:0 14px 40px var(--color-shadow-alpha-07);}
+.profile-head{padding:2.5rem 0 2.6rem;background:linear-gradient(135deg,var(--profile-accent-light),var(--color-surface) 72%);}
+.profile-head-in{width:min(100% - 2.4rem,980px);}
+.avatar{width:8.5rem;height:8.5rem;box-shadow:0 8px 24px var(--color-shadow-alpha-10);}
+.profile-season{letter-spacing:.04em;}
+.profile-head h1{font-size:clamp(2.1rem,4vw,3rem);}
+.profile-section{width:min(100% - 2.4rem,980px);padding:2.35rem 0 2.6rem;}
+.section-heading{gap:1.2rem;margin-bottom:1.35rem;}
+.section-heading-copy{position:relative;}
+.section-kicker{padding:0;margin-bottom:.25rem;font-size:0.85rem;}
+.section-heading h2{font-size:1.77rem;letter-spacing:-.05em;}
+.section-rule{height:1px;flex:1;background:linear-gradient(90deg,var(--profile-line),transparent);}
+.section-divider{width:90%;height:1px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--profile-line) 18%,var(--profile-line) 82%,transparent);}
+.info-grid, .record-grid{gap:1.1rem;}
+.content-card{padding:1.35rem 1.45rem;border-radius:14px;background:linear-gradient(180deg,var(--color-surface),var(--profile-accent-soft));box-shadow:0 4px 16px var(--color-shadow-alpha-035);}
+.content-card h3{font-size:1rem;margin-bottom:1rem;}
+.note-card{margin-top:1.1rem;padding:1.15rem 1.3rem;border-radius:14px;}
+.note-card h3{margin-bottom:.65rem;}
+.profile-links{width:min(100% - 2.4rem,980px);margin:1.35rem auto 0;padding:0 0 2.2rem;gap:.55rem;}
+.profile-links a{border:1px solid var(--profile-line);background:var(--color-surface);transition:.2s ease;}
+.profile-links a:hover{transform:translateY(-1px);box-shadow:0 5px 12px var(--color-shadow-alpha-07);}
+.news-list{gap:.8rem;}
+.news-item{background:var(--color-surface);transition:.2s ease;}
+.news-item:hover{transform:translateY(-1px);box-shadow:0 8px 22px var(--color-shadow-alpha-07);}
+
+.news-meta{font-size:0.85rem;color:var(--profile-muted);}
+.spoiler-overlay{border:1px solid var(--profile-line);box-shadow:0 8px 24px var(--color-shadow-alpha-07);}
+.spoiler-overlay button{box-shadow:0 5px 14px var(--color-shadow-alpha-12);}
+@media(max-width:640px){
+ .profile-card{border-radius:15px;}
+ .profile-head{padding:2rem 0;}
+ .profile-head-in{width:min(100% - 1.4rem,980px);}
+ .profile-section{width:min(100% - 1.4rem,980px);padding:1.8rem 0 2rem;}
+ .section-heading h2{font-size:1.45rem;}
+ .section-rule{display:none;}
+ .profile-links{width:min(100% - 1.4rem,980px);}
+}
+
+/* Requested profile section labels and broadcast-time-only information */
+.section-marker{ color: var(--profile-accent); margin-right: .15rem; }
+.broadcast-info-label{ display: inline-block; margin-left: .45rem; color: var(--muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 0; vertical-align: .12em; }
+#profileInfoOriginal{ grid-column: 1 / -1; }
+
+
+/* 출연자 정보: 기본 정보와 소셜 미디어를 2단으로 배치 */
+.info-grid{ grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
+.profile-social-card{ min-width: 0; }
+.profile-social-card .profile-links{ width: 100%; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.profile-social-card .profile-links a{ display: inline-flex; max-width: 100%; }
+.profile-social-card .profile-links .empty-text{ margin: .25rem 0; }
+
+/* 방송 기록에 연결되는 같은 기수 출연자 프로필 링크 */
+.record-person-link{ color: var(--profile-accent); text-decoration: underline; text-decoration-color: var(--profile-rule); text-underline-offset: .15em; }
+.record-person-link:hover{ text-decoration-thickness: 2px; }
+
+/* 관련 뉴스: 제목·언론사·날짜·외부 링크 아이콘을 한 줄로 정렬 */
+.news-item{ display: grid; grid-template-columns: minmax(0, 1fr) 5.4rem 6.4rem 1rem; align-items: center; gap: .75rem; padding: .72rem .9rem; border-radius: .45rem; box-shadow: none; }
+.news-item a{ grid-column: 1; grid-row: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.85rem; font-weight: 600; }
+.news-item a::after{ content: none; }
+.news-publisher, .news-date{ color: var(--profile-muted); font-size: 0.85rem; white-space: nowrap; }
+.news-publisher{ grid-column: 2; grid-row: 1; text-align: right; overflow: hidden; text-overflow: ellipsis; }
+.news-date{ grid-column: 3; grid-row: 1; text-align: right; }
+.news-open{ grid-column: 4; grid-row: 1; color: var(--profile-accent); text-align: center; font-size: 0.85rem; }
+.news-pagination{ display: flex; justify-content: center; align-items: center; gap: .35rem; margin-top: 1.2rem; }
+.news-page{ display: inline-grid; place-items: center; min-width: 2rem; height: 2rem; padding: 0 .45rem; border: 1px solid transparent; border-radius: 50%; background: transparent; color: var(--profile-text); font: inherit; font-size: 0.85rem; cursor: pointer; }
+.news-page:hover:not(:disabled){ border-color: var(--profile-line); }
+.news-page.is-active{ background: var(--profile-accent); color: var(--color-surface); }
+.news-page-arrow{ border-color: var(--profile-line); color: var(--profile-accent); font-size: 1.15rem; }
+.news-page:disabled{ opacity: .35; cursor: default; }
+@media(max-width:640px) {
+  .info-grid{ grid-template-columns: 1fr; }
+  .news-item{ grid-template-columns: minmax(0, 1fr) auto; gap: .25rem .6rem; }
+  .news-item a{ grid-column: 1 / -1; grid-row: 1; white-space: normal; }
+  .news-publisher{ grid-column: 1; grid-row: 2; text-align: left; }
+  .news-date{ grid-column: 2; grid-row: 2; }
+  .news-open{ display: none; }
+}
+
+/* 프로필 페이지 최종 시각 조정 */
+
+.profile-gender{ margin: .45rem 0 0; color: var(--profile-muted, var(--color-text-muted-soft)); font-size: 0.85rem; font-weight: 700; }
+/* 배경색은 기본 정보·소셜 미디어·관련 뉴스 카드에만 적용 */
+#profileInfoOriginal, .profile-info, .profile-social-card{
+  background: var(--color-status-blue-soft) !important;
+  background-image: none !important;
+}
+.profile-card:not(.profile-male) .profile-info, .profile-card:not(.profile-male) .profile-social-card{
+  background: var(--color-brand-pale) !important;
+}
+/* 방송 기록 카드는 색 배경을 두지 않는다. */
+#broadcastSpoiler .content-card{
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+/* 참고사항은 박스 배경·테두리·그림자 없이 텍스트로 표시 */
+.note-card{
+  background: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* 관련 뉴스만 행 단위로 단색 배경 */
+#profileNews .news-item{
+  background: var(--color-status-blue-soft) !important;
+  background-image: none !important;
+  border: 1px solid var(--profile-line);
+  box-shadow: none !important;
+}
+.profile-card:not(.profile-male) #profileNews .news-item{
+  background: var(--color-brand-pale) !important;
+}
+/* 현재 위치를 본문 상단에 배치하고 명확하게 표시 */
+
+/* 사용자 요청: 브레드크럼 배경은 투명하게, 출연자 링크는 성별별 강조색 */
+
+/* 여성 출연자의 나이·직업·거주지 정보 카드 */
+.profile-card:not(.profile-male) .profile-info, .profile-card:not(.profile-male) #profileInfoOriginal{
+  background: var(--color-brand-pale) !important;
+  background-image: none !important;
+}
+
+/* 뉴스 행 전체가 단일 링크이므로 오른쪽 언론사·날짜·아이콘도 클릭 가능 */
+#profileNews .news-item{
+  display: block;
+  padding: 0;
+  overflow: hidden;
+}
+#profileNews .news-row-link{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: .72rem .9rem;
+  color: var(--profile-text);
+  text-decoration: none;
+}
+#profileNews .news-title{
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+#profileNews .news-row-link:hover .news-title, #profileNews .news-row-link:hover .news-publisher, #profileNews .news-row-link:hover .news-date, #profileNews .news-row-link:hover .news-open{
+  color: var(--profile-accent);
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+#profileNews .news-publisher, #profileNews .news-date{
+  color: var(--profile-muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+#profileNews .news-open{
+  color: var(--profile-accent);
+  font-size: 0.85rem;
+}
+@media (max-width: 640px) {
+  #profileNews .news-row-link{
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: .25rem .6rem;
+  }
+  #profileNews .news-title{
+    grid-column: 1 / -1;
+    grid-row: 1;
+    white-space: normal;
+  }
+  #profileNews .news-publisher{
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+  #profileNews .news-date{
+    grid-column: 2;
+    grid-row: 2;
+  }
+  #profileNews .news-open{
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+/* Shared design tokens: requested archive navigation, search, and list zones */
+.hero, .search-area, .results, .couples-tabs, .couples-page, .season-info-grid, .season-cast-grid{
+  background-color: var(--color-brand-soft, var(--color-brand-soft));
+}
+
+
+/* 프로필 페이지의 성별별 경로 링크 색상은 솔로지옥 전용 테마로 유지 */
+.profile-main.profile-female > .profile-breadcrumbs a { color: var(--color-status-pink-soft) !important; }
+.profile-main.profile-male > .profile-breadcrumbs a { color: var(--color-status-blue-bright) !important; }
+.profile-main.profile-female > .profile-breadcrumbs a:hover { color: var(--color-status-pink-deep) !important; }
+.profile-main.profile-male > .profile-breadcrumbs a:hover { color: var(--color-status-blue-text) !important; }

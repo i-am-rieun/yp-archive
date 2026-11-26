@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>나솔사계 커플 목록 | 연프도감</title>
+<meta name="description" content="나솔사계 역대 최종 커플, 현실 커플, 현재 커플과 예전 커플 정보를 확인할 수 있는 연프도감 아카이브입니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="나솔사계 커플 목록 | 연프도감">
+<meta property="og:description" content="나솔사계 역대 최종 커플, 현실 커플, 현재 커플과 예전 커플 정보를 확인할 수 있는 연프도감 아카이브입니다.">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../css/root_color.css">
+<link rel="stylesheet" href="../css/root_header.css">
+<link rel="stylesheet" href="css/sagye_index.css">
+<link rel="stylesheet" href="css/sagye_couples.css">
+<link rel="stylesheet" href="../css/root_detail-nav.css">
+ 
+
+
+
+
+<style id="global-no-link-underline">
+a,
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:focus-visible,
+a:active {
+  text-decoration: none !important;
+}
+</style>
+
+  <script src="../js/program-config.js" defer></script>
+  <script src="../js/archive-common.js" defer></script>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../css/user-report.css">
+</head><body data-program="sagye" id="top">
+  <header class="header archive-header">
+  <div class="container archive-header-main">
+    <a href="../index.html" class="logo archive-brand" aria-label="연프도감 홈"><span class="archive-brand-letter">연</span><span class="archive-brand-letter">프</span><span class="archive-brand-letter">도</span><span class="archive-brand-letter">감</span></a>
+    <div class="header-font-controls" aria-label="글꼴 크기 조정"><span class="font-controls-label">글꼴 크기 조정</span>
+      <button class="header-font-btn" type="button" id="fontDecrease" aria-label="글꼴 크기 줄이기">−</button>
+      <button class="header-font-btn" type="button" id="fontReset" aria-label="글꼴 크기 기본값">O</button>
+      <button class="header-font-btn" type="button" id="fontIncrease" aria-label="글꼴 크기 키우기">+</button>
+    </div>
+  </div>
+  <div class="archive-subnav-wrap">
+    <div class="container archive-subnav">
+      <div class="archive-breadcrumb" aria-label="아카이브"><a href="sagye_index.html" aria-current="page">나는 SOLO, 그 후 사랑은 계속된다 아카이브</a></div>     
+ <nav class="site-nav" aria-label="나는 SOLO, 그 후 사랑은 계속된다 아카이브 메뉴">
+        <a href="sagye_index.html" data-nav="cast">출연자</a>
+        <a href="sagye_couples.html" data-nav="couples" aria-current="page">커플</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<main><section class="hero"><div class="container hero-inner"><p class="eyebrow">KT ENA X SBS PLUS 연애 리얼리티 프로그램</p><h1><em>나솔사계</em> 커플 목록</h1>
+<p class="lead">나솔사계 솔로민박에서 탄생한 최종 커플, 현실 커플, 예전 커플을 확인하세요.</p>
+      <div class="stats">
+        <div><a href="sagye_index.html" class="stats-link"><strong id="totalSeason">0 기</strong></a><span>시즌</span></div>
+        <div><a href="sagye_index.html" class="stats-link"><strong id="totalCast">0 명</strong></a><span>출연자</span></div>
+        <div><a href="sagye_couples.html?type=final" class="stats-link"><strong id="finalCount">0 쌍</strong></a><span><a href="sagye_couples.html?type=final" class="stats-link">최종 커플</a></span></div>
+        <div><a href="sagye_couples.html?type=reality" class="stats-link"><strong id="realityCount">0 쌍</strong></a><span><a href="sagye_couples.html?type=reality" class="stats-link">현실 커플</a></span></div>
+      </div>
+<div class="couples-tabs"><button class="couple-tab active" data-type="all">전체</button><button class="couple-tab" data-type="final">최종 커플</button><button class="couple-tab" data-type="reality">현실 커플</button><button class="couple-tab" data-type="current">현재 커플</button><button class="couple-tab" data-type="past">예전 커플</button></div></div></section><section class="couples-page"><div class="container"><div id="couplesContainer" class="couples-grid"></div></div></section></main><footer class="footer-with-top"><span>연프도감 · 프로그램 아카이브</span> <a class="footer-top" href="#top">맨 위로 ↑</a></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-config.js"></script>
+<script src="../js/user-report.js"></script>
+<script src="js/sagye_couples.js">
+</script>
+
+<script>
+/* 일반 페이지 콘텐츠 복사 제한: 텍스트 선택은 허용하고 복사 이벤트만 차단합니다. 입력 영역은 예외입니다. */
+(() => {
+  "use strict";
+  document.addEventListener("copy", (event) => {
+    const target = event.target;
+    if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"], [role="textbox"]')) {
+      return;
+    }
+    const selection = window.getSelection();
+    if (selection && !selection.isCollapsed) {
+      event.preventDefault();
+    }
+  }, true);
+})();
+</script>
+</body></html>

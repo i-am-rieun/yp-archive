@@ -1,5 +1,7 @@
 (() => {
   "use strict";
+  if (window.__dolIndexInitialized) return;
+  window.__dolIndexInitialized = true;
 
   const client = window.supabaseClient;
   const PROGRAM_SLUG = "dol";
@@ -122,7 +124,7 @@
       const age = getCastAge(cast, season);
       return `
       <li>
-        <a class="cast-item" href="dol_profile.html?id=${encodeURIComponent(cast.id)}">
+        <a class="cast-item" href="/p/dol-profile.html?id=${encodeURIComponent(cast.id)}">
           <span class="cast-badge ${genderClass}">
             ${escapeHtml(cast.name)}
           </span>
@@ -214,7 +216,7 @@
       return `
         <section class="season-card">
           <div class="season-header">
-            <h2 class="season-title"><a class="season-detail-link" href="dol_seasons.html?id=${encodeURIComponent(season.id)}">${escapeHtml(season.season_number)}기</a></h2>
+            <h2 class="season-title"><a class="season-detail-link" href="/p/dol-seasons.html?id=${encodeURIComponent(season.id)}">${escapeHtml(season.season_number)}기</a></h2>
             ${season.special_label ? `<span class="special-badge">${escapeHtml(season.special_label)}</span>` : ""}
             <span class="season-date">${escapeHtml(getBroadcastPeriod(season))}</span>
             ${season.location ? `<span class="season-location">· ${escapeHtml(season.location)}</span>` : ""}
@@ -432,7 +434,10 @@
     setupResultToolbar();
     setupSearchPlaceholder();
     bindEvents();
-    loadData();
+    loadData().catch((error) => {
+      console.error("돌싱글즈 데이터 초기화 오류:", error);
+      showMessage(`데이터를 불러오지 못했습니다. ${error?.message || error}`);
+    });
   }
 
 function adjustFont(delta) {

@@ -76,11 +76,108 @@
  programJump?.addEventListener('change',()=>{if(programJump.value) document.querySelector(programJump.value)?.scrollIntoView({behavior:'smooth',block:'start'});});
  const client=window.supabaseClient;
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- async function loadNews(){const box=document.getElementById('latestNewsList');if(!client){box.innerHTML='<p class="section-empty">Supabase 연결 설정을 확인해 주세요.</p>';return}
-  const {data,error}=await client.from('cast_news_links').select('id,url,title,publisher,published_at,updated_at,created_at,cast_member_id,season_id,is_published,cast_members(name),seasons(season_number,programs(name))').eq('is_published',true).order('updated_at',{ascending:false,nullsFirst:false}).order('published_at',{ascending:false,nullsFirst:false}).limit(5);
-  if(error){console.error('최신 소식 조회 오류:',error);box.innerHTML='<p class="section-empty">최신 소식을 불러오지 못했습니다. 뉴스 테이블의 공개 정책과 컬럼을 확인해 주세요.</p>';return}
-  if(!data?.length){box.innerHTML='<p class="section-empty">등록된 출연자 관련 뉴스가 없습니다.</p>';return}
-  box.innerHTML=data.map((n,i)=>{const date=n.updated_at||n.published_at||n.created_at;const label=date?new Date(date).toLocaleDateString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'}):'날짜 미정';const cast=Array.isArray(n.cast_members)?n.cast_members[0]:n.cast_members;const season=Array.isArray(n.seasons)?n.seasons[0]:n.seasons;const program=Array.isArray(season?.programs)?season.programs[0]:season?.programs;const details=[program?.name,season?.season_number?season.season_number+'기':null,cast?.name].filter(Boolean).join(' · ');const meta=[details,n.publisher?`(${n.publisher})`:null].filter(Boolean).join(' ');return `<a class="news-row" href="${esc(n.url)}" target="_blank" rel="noopener noreferrer"><span class="news-number">${String(i+1).padStart(2,'0')}</span><span class="news-main"><strong>${esc(n.title||'제목 미등록 뉴스')}</strong><small>${esc(meta||'출연자 관련 소식')}</small></span><time datetime="${esc(date||'')}">${esc(label)}</time><span class="news-arrow">↗</span></a>`}).join('');
+ async function loadNews(){
+  const box=document.getElementById('latestNewsList');
+  if(!box) return;
+  if(!client || typeof client.from !== 'function'){
+   box.innerHTML='<p class="section-empty">Supabase 연결 설정을 확인해 주세요.</p>';
+   return;
+  }
+
+  async function fetchAll(table, columns, filters = []) {
+   const pageSize = 1000;
+   const rows = [];
+   for(let offset = 0; ; offset += pageSize) {
+    let query = client.from(table).select(columns).order('id', {ascending:true});
+    for(const filter of filters) query = query.eq(filter.column, filter.value);
+    const {data, error} = await query.range(offset, offset + pageSize - 1);
+    if(error) throw error;
+    const page = data || [];
+    rows.push(...page);
+    if(page.length < pageSize) break;
+   }
+   return rows;
+  }
+
+  const dateValue = row => row.published_at || row.updated_at || row.created_at || '';
+  const dateTimestamp = value => {
+   if(!value) return 0;
+   const timestamp = new Date(value).getTime();
+   return Number.isFinite(timestamp) ? timestamp : 0;
+  };
+
+  try {
+   const [programs, seasons, castMembers, newsRows] = await Promise.all([
+    fetchAll('programs', 'id,slug,name', [{column:'is_published', value:true}]),
+    fetchAll('seasons', 'id,season_number,display_name,program_id', [{column:'is_published', value:true}]),
+    fetchAll('cast_members', 'id,name,season_id', [{column:'is_published', value:true}]),
+    fetchAll('cast_news_links', 'id,url,title,publisher,published_at,sort_order,is_published,created_at,updated_at,cast_member_id,season_id', [{column:'is_published', value:true}])
+   ]);
+
+   const programById = new Map(programs.map(program => [String(program.id), program]));
+   const seasonById = new Map();
+   seasons.forEach(season => {
+    const program = programById.get(String(season.program_id));
+    if(program) seasonById.set(String(season.id), {...season, program});
+   });
+
+   const castById = new Map();
+   castMembers.forEach(cast => {
+    const season = seasonById.get(String(cast.season_id));
+    if(season) castById.set(String(cast.id), {...cast, season});
+   });
+
+   const byUrl = new Map();
+   for(const row of newsRows) {
+    const directSeason = row.season_id ? seasonById.get(String(row.season_id)) : null;
+    const linkedCast = row.cast_member_id ? castById.get(String(row.cast_member_id)) : null;
+    const season = directSeason || linkedCast?.season || null;
+    if(!season) continue;
+
+    const cast = linkedCast && String(linkedCast.season_id) === String(season.id) ? linkedCast : null;
+    const url = String(row.url || '').trim();
+    if(!url) continue;
+
+    const item = {
+     id:row.id, url,
+     title:String(row.title || '').trim() || '제목 미등록 뉴스',
+     publisher:String(row.publisher || '').trim(),
+     published_at:row.published_at || null,
+     updated_at:row.updated_at || null,
+     created_at:row.created_at || null,
+     sort_order:Number.isFinite(Number(row.sort_order)) ? Number(row.sort_order) : 0,
+     program_name:season.program.name,
+     season_label:season.display_name || (season.season_number ? `${season.season_number}기` : ''),
+     cast_name:cast?.name || ''
+    };
+
+    const previous = byUrl.get(url);
+    if(!previous || (item.cast_name && !previous.cast_name)) byUrl.set(url, item);
+   }
+
+   const latest = [...byUrl.values()].sort((a,b) => {
+    const dateDiff = dateTimestamp(dateValue(b)) - dateTimestamp(dateValue(a));
+    if(dateDiff) return dateDiff;
+    if(a.sort_order !== b.sort_order) return a.sort_order - b.sort_order;
+    return Number(a.id) - Number(b.id);
+   }).slice(0,5);
+
+   if(!latest.length){
+    box.innerHTML='<p class="section-empty">등록된 출연자 관련 뉴스가 없습니다.</p>';
+    return;
+   }
+
+   box.innerHTML=latest.map((item,index) => {
+    const date=dateValue(item);
+    const label=date ? new Date(date).toLocaleDateString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'}) : '날짜 미정';
+    const details=[item.program_name,item.season_label,item.cast_name].filter(Boolean).join(' · ');
+    const meta=[details,item.publisher ? `(${item.publisher})` : null].filter(Boolean).join(' ');
+    return `<a class="news-row" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer"><span class="news-number">${String(index+1).padStart(2,'0')}</span><span class="news-main"><strong>${esc(item.title)}</strong><small>${esc(meta || '출연자 관련 소식')}</small></span><time datetime="${esc(date)}">${esc(label)}</time><span class="news-arrow" aria-hidden="true">↗</span></a>`;
+   }).join('');
+  } catch(error) {
+   console.error('최신 소식 조회 오류:',error);
+   box.innerHTML='<p class="section-empty">최신 소식을 불러오지 못했습니다. 뉴스 테이블의 공개 정책과 연결 설정을 확인해 주세요.</p>';
+  }
  }
 
  async function initProgramMetrics(){
